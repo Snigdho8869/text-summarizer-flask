@@ -1,0 +1,125 @@
+
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        
+        form {
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        
+        textarea {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        p {
+            margin-bottom: 5px;
+        }
+        
+        span {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        input[type="submit"] {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+        
+        .summary-container {
+            margin: 30px auto;
+            max-width: 800px;
+	    animation-name: fadeIn;
+  	    animation-duration: 1s;
+  	    animation-fill-mode: both;
+	    margin-bottom: 160px; 
+        }
+        
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        p.summary {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .share-buttons {
+            margin-top: 10px;
+            text-align: center;
+	    
+        }
+        
+        .share-buttons button {
+            background-color: #3B5998;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+	    
+        }
+        
+        .share-buttons button:hover {
+            background-color: #2d4373;
+        }
+  
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+input[type="submit"] {
+    transition: background-color 0.5s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            margin-top: 50px;
+            padding: 10px;
+            background-color: #111;
+            color: #ccc;
+            font-size: 14px;
+        }
+        .footer a {
+            color: #f0a500;
+        }
