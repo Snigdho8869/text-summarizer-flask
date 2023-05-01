@@ -1,33 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Text Summarizer</title>
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <head>
+        <meta charset="UTF-8">
+        <title>Text Summarizer</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-    <h1>Text Summarizer</h1>
-    <form method="POST">
-        <textarea name="text" rows="10" cols="80" onkeyup="countCharacters(); countWords();">{% if text %}{{ text }}{% endif %}</textarea>
-        <p><span>Characters:</span> <span id="charCount">0</span></p>
-        <p><span>Words:</span> <span id="wordCount">0</span></p>
-        <input type="submit" value="Summarize">
-    </form>
-    {% if summary %}
-        <div class="summary-container" class="summary-container animate__animated animate__fadeIn">
-            <h2>Summary:</h2>
-            <p class="summary">{{ summary }}</p>
-            <div class="share-buttons">
-                <button onclick="shareOnTwitter()">Share on Twitter</button>
-                <button onclick="shareOnFacebook()">Share on Facebook</button>
-                <button onclick="shareByEmail()">Share by Email</button>
-            </div>
+
+    </head>
+    <body>
+        <h2>Text Summarizer</h2>
+<div class="count" id="text-count"></div>
+        <form>
+            <textarea id="text" placeholder="Enter text here" oninput="updateCount()"></textarea>
+            <button type="button" onclick="summarizer()">Summarize</button>
+        </form>
+<h3>Summerized Text:</h3>
+        <div class="summarize-count" id="summarize-count"></div>
+         <div class="summarize-container" id="summarize-container"  oninput="updateCount()">
+            <div id="summarize_text"></div>
         </div>
-    {% endif %}
-    <div class="footer">
-        <p>All rights reserved &copy; 2023 Text Summarizer</p>
-        <p>Follow me on <a href="https://github.com/Snigdho8869" target="_blank">GitHub</a> and <a href="https://www.facebook.com/zahidul.snigdho/" target="_blank">Facebook</a></p>
-    </div>
-</body>
+
+    </body>	
 </html>
