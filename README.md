@@ -1,4 +1,4 @@
-# Text Summarizer with BART Pretrained Model
+# Text Summarizer with BART, GPT-2 Pretrained Models
 
 This repository contains a Flask-based web application that utilizes the BART (Bidirectional and Auto-Regressive Transformer), GPT-2 pretrained models for text summarization. BART, GPT-2 are transformer-based models that can perform a wide range of natural language processing tasks, including summarization.
 
