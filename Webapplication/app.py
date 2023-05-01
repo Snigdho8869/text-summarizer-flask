@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, render_template, redirect, url_for
 import numpy as np
 import torch
 from transformers import BartForConditionalGeneration, BartTokenizer, T5ForConditionalGeneration, T5Tokenizer, GPT2LMHeadModel,GPT2Tokenizer
-
+#Developed by Md Zahidul Islam
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
@@ -16,12 +16,12 @@ tokenizers = {
     'bart': BartTokenizer.from_pretrained('facebook/bart-large-cnn'),
     'gpt': GPT2Tokenizer.from_pretrained('gpt2'),
 }
-
+#Developed by Md Zahidul Islam
 @app.route('/')
 def home():
     return render_template('index.html')
 
-
+#Developed by Md Zahidul Islam
 @app.route('/text-summarizer', methods=['POST'])
 def text_summarizer():
     def summarize_text(text, models, tokenizers):
@@ -41,6 +41,7 @@ def text_summarizer():
                                       early_stopping=True,
                                       pad_token_id=tokenizer.eos_token_id,
                                       attention_mask=input_ids.new_ones(input_ids.shape))
+#Developed by Md Zahidul Islam
             summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
             summaries.append(summary)
         return summaries
@@ -56,7 +57,7 @@ def text_summarizer():
     return response
 
 
-
+#Developed by Md Zahidul Islam
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',debug=True)
