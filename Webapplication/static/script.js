@@ -1,34 +1,52 @@
-
-        function countCharacters() {
-            var text = document.querySelector('textarea').value;
-            var charCount = text.length;
-            document.querySelector('#charCount').innerHTML = charCount;
-        }
+function summarizer() {
+    var text = document.getElementById('text').value.trim();
+    
+    if (text === '') {
+        document.getElementById('summarize_text').innerHTML = 'Please Enter Some Text';
+	updateCount();
+        return;
+    }
+    
+    fetch('/text-summarizer', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            text: text
+        })
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        var predictionText = data.summarizeText;
+        document.getElementById('summarize_text').innerHTML = predictionText;
         
-        function countWords() {
-            var text = document.querySelector('textarea').value;
-            var wordCount = text.trim().split(/\s+/).length;
-            document.querySelector('#wordCount').innerHTML = wordCount;
-        }
+        const predictionDiv = document.getElementById('summarize_text');
+        const animation = anime({
+          targets: predictionDiv,
+          translateY: ["-100%", 0],
+          opacity: [0, 1],
+          scale: [0.5, 1],
+          duration: 1000,
+          easing: "spring(1, 80, 10, 0)",
+          delay: 500
+        });
+	updateCount();
+    })
+    .catch(function(error) {
+        document.getElementById('summarize_text').innerHTML = 'Error: ' + error.message;
+    });
+}
 
 
+function updateCount() {
+                var text = document.getElementById('text').value;
+                var textCount = text.length + ' characters, ' + text.trim().split(/\s+/).length + ' words';
+                document.getElementById('text-count').textContent = textCount;
 
-        function shareOnTwitter() {
-            var text = document.querySelector('p').textContent;
-            var url = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text);
-            window.open(url, "_blank");
-        }
-        
-        function shareOnFacebook() {
-            var text = document.querySelector('p').textContent;
-            var url = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(text);
-            window.open(url, "_blank");
-        }
-        
-        function shareByEmail() {
-            var text = document.querySelector('p').textContent;
-            var subject = "Check out this summary";
-            var body = text;
-            var url = "mailto:?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-            window.open(url, "_blank");
-        }
+                var summarize = document.getElementById('summarize-container').textContent;
+                var summarizeCount =  summarize.trim().split(/\s+/).length + ' words';
+                document.getElementById('summarize-count').textContent = summarizeCount;
+            }
